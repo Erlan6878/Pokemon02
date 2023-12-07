@@ -1,0 +1,28 @@
+{
+  "Pokemon": [
+    {
+      "pokeName": "Bulbasaur",
+      "pokeXP": "XP120",
+      "pokeImage": "https://flyclipart.com/thumb2/pokemon-bulbasaur-pokedex-evolution-moves-location-stats-584993.png",
+      "pokePrice": "100$",
+      "poketip": "Травяной",
+      "id": 1
+    },
+    {
+      "pokeName": "Ivysaur",
+      "pokeXP": "XP250",
+      "pokeImage": "https://avatars.mds.yandex.net/i?id=7c5d3ec592fc276d634d3f30177ef99f7036eb4f-10576312-images-thumbs&n=13",
+      "pokePrice": "300",
+      "poketip": "Травяной",
+      "id": 2
+    },
+    {
+      "pokeName": "fsdg",
+      "pokeXP": "gfdhj",
+      "pokeImage": "https://all-t-shirts.ru/goods_images/1713/1876/ru133313/ru133313II0004f7b746c72bc62ea8b25a0947af98baa.jpg",
+      "pokePrice": "565665",
+      "poketip": "jfghk",
+      "id": 3
+    }
+  ]
+}
