@@ -4,7 +4,7 @@
       "pokeName": "Bulbasaur",
       "pokeXP": "XP120",
       "pokeImage": "https://flyclipart.com/thumb2/pokemon-bulbasaur-pokedex-evolution-moves-location-stats-584993.png",
-      "pokePrice": "100$",
+      "pokePrice": "65345",
       "poketip": "Травяной",
       "id": 1
     },
@@ -23,6 +23,22 @@
       "pokePrice": "565665",
       "poketip": "jfghk",
       "id": 3
+    },
+    {
+      "pokeName": "Пикачу",
+      "pokeXP": "12",
+      "pokeImage": "https://w.forfun.com/fetch/e8/e88cf7a8a783e774466def7376e55421.jpeg",
+      "pokePrice": "75421",
+      "poketip": "кувена",
+      "id": 4
+    },
+    {
+      "pokeName": "Чермандер",
+      "pokeXP": "150",
+      "pokeImage": "https://flowers-sktvkar.ru/assets/images/products/1580/avy2nbn-doo.jpg",
+      "pokePrice": "75456",
+      "poketip": "евнагпр",
+      "id": 5
     }
   ]
 }

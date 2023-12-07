@@ -1,5 +1,5 @@
 const API = "http://localhost:8000/Pokemon";
-// Сохраняем в переменные все инпуты для ввода данных и кнопки
+
 let inpName = document.querySelector("#inpName");
 let inpXP = document.querySelector("#inpXP");
 let inpImage = document.querySelector("#inpImage");
@@ -9,26 +9,26 @@ let btnAdd = document.querySelector("#btnAdd");
 let btnOpenForm = document.querySelector("#flush-collapseOne");
 let sectionBooks = document.querySelector("#sectionBooks");
 
-// Переменные для пагинации
+
 let currentPage = 1;
 let countPage = 1;
 
-// Кнопки для пагинации
+
 let prevBtn = document.querySelector("#prevBtn");
 let nextBtn = document.querySelector("#nextBtn");
 
-// Переменная для поиска
+
 let inpSearch = document.querySelector("#inpSearch");
 let searchValue = "";
 
-// Переменная для корзины
 
-// Переменная для детального обзора
+
+
 let detailsContainer = document.querySelector(".details");
 
-// Навешиваем событие на кнопку добавить
+//todo------------------------------------------------------
 btnAdd.addEventListener("click", () => {
-  // Проверка на заполненность полей
+ 
   if (
     !inpName.value.trim() ||
     !inpXP.value.trim() ||
@@ -39,7 +39,7 @@ btnAdd.addEventListener("click", () => {
     alert("Заполните все поля!");
     return;
   }
-  // Создаем новый обьект, куда добавляет значение наших инпутов (Создание новой книги)
+ 
   let newPokemon = {
     pokeName: inpName.value,
     pokeXP: inpXP.value,
@@ -47,42 +47,41 @@ btnAdd.addEventListener("click", () => {
     pokePrice: inpPrice.value,
     poketip: inptip.value,
   };
-  createPokemon(newPokemon); // Вызываем функцию для добавления новой книги
-  // в базу данных и передаем в качестве аргумента обьект, созданный выше
-  readPokemon(); // вызываем функцию для отображения данных
+  createPokemon(newPokemon); 
+  
+  readPokemon(); 
 });
 
-//!======================= CREATE =========================
-// функция для добавления новых книг в базу данных
+//todo\\\\\\\\\\\\\\\\\\\\\ CREATE \\\\\\\\\\\\\\\\\\\\\\\\\\
+
 function createPokemon(poke) {
   fetch(API, {
-    // отправляем запрос методом POST, для отправки данных
+    
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
     },
     body: JSON.stringify(poke),
   });
-  // совершаем очистку инпутов
+ 
   inpName.value = "";
   inpXP.value = "";
   inpImage.value = "";
   inpPrice.value = "";
   inptip.value = "";
 
-  // меняем класс с помощью toggle у аккордиона, для того чтобы закрывался аккордион
+ 
   btnOpenForm.classList.toggle("show");
 }
 
-//!======================== READ ==========================
-// создаем функцию для отображения данных
+//todo \\\\\\\\\\\\\\\\\\\\\\ READ \\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 async function readPokemon() {
   const response = await fetch(
-    // получение данных из базы, передаем значение инпута в запрос мы должны прописать обязательно ?_q={}
+
     `${API}?q=${searchValue}&_page=${currentPage}&_limit=3`
   );
   const data = await response.json();
-  // очищаем наш тег, чтобы не было дубликатов
   sectionBooks.innerHTML = "";
   data.forEach((elem) => {
     sectionBooks.innerHTML += `
@@ -117,9 +116,9 @@ async function readPokemon() {
           class="card-img-top deteilsCard"
           style="height: 280px"
         /></p>
-          <p>Название: <span id="cardName">${elem.pokeName}</span></p>
-          <p>XP: <span id="cardXP">${elem.pokeXP}</span></p>
-          <p>Цена: <span id="cardPrice">${elem.pokePrice}</span></p>
+          <p>Название: <span id="cardName">${elem.pokeName.id}</span></p>
+          <p>XP: <span id="cardXP">${elem.pokeXP.id}</span></p>
+          <p>Цена: <span id="cardPrice">${elem.pokePrice.id}</span></p>
           <p>Тип: <span id="cardType">${elem.poketip}</span></p>
         </div>
         <div class="modal-footer">
@@ -152,36 +151,19 @@ async function readPokemon() {
   });
   pageFunc();
 }
-// один раз вызываем функцию для отображения данных, для того чтобы данные при первом открытии сайта, данные отобразились
 readPokemon();
-// todo---------------------------------------------------------
-
-
-
-
-
-
-
-//!======================= DELETE ==========================
-// событие на кнопку удаление
+//todo \\\\\\\\\\\\\\\\\\\\\\\\\\\\ DELETE ///////////////////////////////
 document.addEventListener("click", (e) => {
-  // сохраняем массив с классами в переменную
-  let del_class = [...e.target.classList];
-
-  // проверяем есть ли в нашем массиве класс btnDelete
+  let del_class = [...e.target.classList]
   if (del_class.includes("btnDelete")) {
-    // сохраняем id элемента, по которому кликнули
     let del_id = e.target.id;
-
-    // делаем запрос методом DELETE
     fetch(`${API}/${del_id}`, {
       method: "DELETE",
-    }).then(() => readPokemon()); // вызываем функцию отображения данных,
-    // для того чтобы все перезагрузилось сразу же после удаления одной книги
+    }).then(() => readPokemon()); 
   }
 });
 
-//!======================== EDIT =============================
+//todo\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ EDIT \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 let editInpName = document.querySelector("#editInpName");
 let editInpXP = document.querySelector("#editInpXP");
 let editInpImage = document.querySelector("#editInpImage");
@@ -228,47 +210,41 @@ function editPokemon(editPokemon, id) {
   }).then(() => readPokemon());
 }
 
-//!==================== PAGINATION ========================
-// функция для отображения определенных элементов на странице(в зависимости от указанного кол-во элементов)
+//todo /////////////////////////// PAGINATION \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 function pageFunc() {
   fetch(`${API}?q=${searchValue}`)
     .then((res) => {
       return res.json();
     })
     .then((data) => {
-      // записываем в переменную countPage = текущую страницу
+      
       countPage = Math.ceil(data.length / 3);
     });
 }
 
 prevBtn.addEventListener("click", () => {
-  // проверяем на какой странице мы сейчас находимся
   if (currentPage <= 1) return;
   currentPage--;
   readPokemon();
 });
 
 nextBtn.addEventListener("click", () => {
-  // проверяем на какой странице мы сейчас находимся
   if (currentPage >= countPage) return;
   currentPage++;
   readPokemon();
 });
 
-//!====================== SEARCH ==========================
-// добавляем слушатель событий для поля ввода в inpSearch. Он реагирует на событие input,
-// то есть каждый раз, когда пользователь что-то вводит в инпут.
-// Внутри этого слушателя событий есть стрелочня функция которая выполняется при каждом событии input.
-// e.target.value содержит значение, введенное пользователем в инпут.
+//todo //////////////////////////// SEARCH \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 currentPage = 1;
 inpSearch.addEventListener("input", (e) => {
   searchValue = e.target.value.trim();
-  readPokemon(); // вызов функции для мгновенного отображения
+  readPokemon(); 
 });
 
-//!================== Корзина =====================
+//todo ////////////////// Model \\\\\\\\\\\\\\\
 
-// Пример заполнения модального окна данными
+
 document.getElementById('cardName').innerText = 'Название вашей карточки';
 document.getElementById('cardXP').innerText = 'XP вашей карточки';
 document.getElementById('cardImage').src = 'путь к изображению';
@@ -276,64 +252,3 @@ document.getElementById('cardPrice').innerText = 'Цена вашей карто
 document.getElementById('cardType').innerText = 'Тип вашей карточки';
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// /* <button class="detailsCard btn btn-outline-warning">
-//         Подробнее
-//         </button> */
-
-// document.querySelector("click", (e) => {
-//   let classImg = [e.target.classList];
-//   if (classImg.includes("detailsCard")) {
-//     details(e.target.id);
-//   }
-// });
-
-// async function details(id) {
-//   try {
-//     const res = await fetch(`${API}/${id}`);
-//     const data = await res.json();
-//     displayDetails(data);
-
-//     if (!res.ok) {
-//       console.log(`HTTP ERROR! STATUS: ${res.status}`);
-//     }
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
-// let btnDetails = document.querySelector(".detailsCard");
-// btnDetails.addEventListener("click", () => {
-//   sectionBooks.style.display = "none";
-// });
-
-// function displayDetails(data) {
-//   detailsContainer.innerHTML = `
-//   <img src="${data.bookImage}" alt="Image">
-//   <h2>${data.bookName}</h2>
-//   <span>${data.bookAuthor}</span>
-//   <p>${data.bookPrice}</p>
-//  `;
-// }

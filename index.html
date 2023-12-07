@@ -228,7 +228,36 @@
   <!-- Кнопка для вызова модального окна -->
 <!-- Модальное окно -->
 
-  
+  <!-- Кнопка для вызова модального окна -->
+
+
+<!-- Модальное окно -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Информация о карточке</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Здесь размещаете информацию о карточке, которую хотите отобразить -->
+        <p>Название: <span id="cardName"></span></p>
+        <p>XP: <span id="cardXP"></span></p>
+        <p>Фото: <img id="cardImage" src="" alt="Фото карточки"></p>
+        <p>Цена: <span id="cardPrice"></span></p>
+        <p>Тип: <span id="cardType"></span></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
   
       <!-- PAGINATION START -->
       <nav aria-label="Page navigation example">
@@ -252,3 +281,8 @@
   ></script>
 </body>
 </html>
+
+
+
+
+
